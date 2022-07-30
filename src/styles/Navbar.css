@@ -1,0 +1,26 @@
+nav {
+  font-size: x-large;
+  font-family: "Vollkorn", serif;
+  padding: 2rem;
+  background: linear-gradient(to right, #7f00ff, #e100ff);
+  color: white;
+}
+
+img {
+  width: 5rem;
+}
+
+li:first-child {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 4rem 0 4rem;
+}
