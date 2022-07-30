@@ -1,1 +1,1 @@
-!(src/assets/images/pepe.png)
+![pepe](src/assets/images/pepe.png)
