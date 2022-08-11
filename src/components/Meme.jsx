@@ -1,18 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Meme.css";
 
 function Meme() {
   const [meme, setMeme] = useState({
     topText: "",
     bottomText: "",
-    randomImage: "https://imgur.com/pC7xVnn",
+    randomImage: "http://i.imgflip.com/1bij.jpg",
   });
-  const [memeImage, setMemeImage] = useState("");
+
+  const [memeImage, setMemeImage] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes")
+      .then((res) => res.json())
+      .then((data) => setMemeImage(data.data.memes));
+  }, []);
 
   function getMemeImage() {
-    const memesArray = memesData.data.memes;
-    const randomNumber = Math.floor(Math.random() * memesArray.length);
-    setMemeImage(memesArray[randomNumber].url);
+    const randomNumber = Math.floor(Math.random() * memeImage.length);
+    const url = memeImage[randomNumber].url;
     setMeme((prevMemeImage) => {
       return { ...prevMemeImage, randomImage: url };
     });
@@ -45,6 +51,8 @@ function Meme() {
       </div>
       <button onClick={getMemeImage}>👉 new meme image 👈</button>
       <img className="memeImage" src={meme.randomImage} alt="memeImg" />
+      <h2 className="text--top">{meme.topText}</h2>
+      <h2 className="text--bottom">{meme.bottomText}</h2>
     </section>
   );
 }

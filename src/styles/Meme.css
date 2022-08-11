@@ -30,6 +30,7 @@ button {
   letter-spacing: 0.2rem;
   border: none;
   font-weight: bold;
+  cursor: pointer;
 }
 
 input {
@@ -39,4 +40,36 @@ input {
   border-color: rgba(0, 0, 0, 0.267);
   text-indent: 1.5rem;
   font-size: x-large;
+}
+
+section img {
+  width: 100%;
+  border: 3px solid black;
+  border-radius: 0.5rem;
+}
+
+section h2 {
+  position: absolute;
+  width: 80%;
+  text-align: center;
+  top: 40%;
+  transform: translateY(650%);
+  margin: 15px 0;
+  padding: 0 5px;
+  font-family: impact, sans-serif;
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
+    -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000,
+    2px 2px 5px #000;
+}
+
+.text--top {
+  top: 0;
+}
+
+.text-bottom {
+  bottom: 0;
 }
