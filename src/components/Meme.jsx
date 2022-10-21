@@ -10,10 +10,19 @@ function Meme() {
 
   const [memeImage, setMemeImage] = useState([]);
 
+  // useEffect(() => {
+  //   fetch("https://api.imgflip.com/get_memes")
+  //     .then((res) => res.json())
+  //     .then((data) => setMemeImage(data.data.memes));
+  // }, []);
+
   useEffect(() => {
-    fetch("https://api.imgflip.com/get_memes")
-      .then((res) => res.json())
-      .then((data) => setMemeImage(data.data.memes));
+    async function fetchMemes() {
+      const res = await fetch("https://api.imgflip.com/get_memes");
+      const data = await res.json();
+      setMemeImage(data.data.memes);
+    }
+    fetchMemes();
   }, []);
 
   function getMemeImage() {
@@ -50,9 +59,11 @@ function Meme() {
         />
       </div>
       <button onClick={getMemeImage}>👉 new meme image 👈</button>
-      <img className="memeImage" src={meme.randomImage} alt="memeImg" />
-      <h2 className="text--top">{meme.topText}</h2>
-      <h2 className="text--bottom">{meme.bottomText}</h2>
+      <div className="meme">
+        <img className="memeImage" src={meme.randomImage} alt="memeImg" />
+        <h2 className="text--top">{meme.topText}</h2>
+        <h2 className="text--bottom">{meme.bottomText}</h2>
+      </div>
     </section>
   );
 }
